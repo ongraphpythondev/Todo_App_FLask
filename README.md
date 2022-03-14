@@ -7,21 +7,21 @@ Python 3.7+
 
 # Installation and Running
 
-clone the repository
+**clone the repository**
 ```
 git clone https://github.com/ongraphpythondev/Todo_App_FLask.git
 cd Todo_App_FLask
 ```
-create a virtual environment
+**create a virtual environment**
 ```
 python3 -m venv env
 env/bin/activate.bat
 ```
-install required packages
+**install required packages**
 ```
 pip install -r requirements.txt
 ```
-running
+**running**
 ```
 python app.py
 ```
@@ -30,3 +30,4 @@ python app.py
    2) Update the task
    3) Delete the task
    
+**Thanks**
