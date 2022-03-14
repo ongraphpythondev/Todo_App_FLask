@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+
+
+
+<!-- Button trigger modal -->
+<div class="col-md-12 text-center">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Add A Todo
+</button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Todo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="card">
+      <div class="modal-body">
+        <div class="card-body">
+
+            <form action="{{ url_for('home') }}" method="POST">
+                <div class="mb-3">
+                  <label for="title" class="card-title">Todo Title</label>
+                  <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="card-title">Todo Description</label>
+                  <input type="text" class="form-control" name="description" id="description">
+                </div>
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+  <!-- <div class="container my-3">
+      <h2>Add A Todo</h2>
+      <form action="/" method="POST">
+        <div class="mb-3">
+          <label for="title" class="form-label">Todo Title</label>
+          <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Todo Description</label>
+          <input type="text" class="form-control" name="description" id="description">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div> -->
+
+  <div class="container my-3">
+    {% if allTodo|length == 0 %}
+    <div class="alert alert-danger" role="alert">
+      <h2>No record</h2>
+    </div>
+    {% else %}
+    <h2 class="card-header mx-auto">MyTodos</h2><br>
+    {% for todo in allTodo %}
+    <div class="card mx-auto" style="width: 50rem;">
+
+    <table class="table">
+      <thead class='card-header mx-auto'>
+        <tr>
+          <th scope="col">SNo</th>
+          <th scope="col">title</th>
+          <th scope="col">description</th>
+          <th scope="col">Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="table-primary">
+          <th scope="row">{{loop.index}}</th>
+          <td>{{todo.title}}</td>
+          <td>{{todo.description}}</td>
+          <td>{{todo.date_created}}</td>
+          <td>
+
+            <button>
+              <a href="{{ url_for('update', sno=todo.sno) }}" ><i class='fas fa-edit'></i></a>
+            </button>
+            <button>
+              <a href="{{ url_for('delete', sno=todo.sno) }}"><i class="bi bi-trash"></i></a>
+            </button>
+            <!-- <a href="{{ url_for('view', sno=todo.sno)   }}" type="button" class="btn btn-primary btn-sm mx-2">View</a> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+        </div><br>
+        {% endfor %}
+
+  </div>
+  </div>
+
+  {% endif %}
+{% endblock content %}
