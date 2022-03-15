@@ -1,0 +1,21 @@
+.fullclick li {
+    list-style: none;
+    margin: 1em 0;
+    padding: 20px 10px;
+    background: #f6f6face;
+    position: sticky;
+  }
+  .fullclick a.main {
+    color: #85baff;
+    text-align: right;
+    display: block;
+    z-index: 2;
+  }
+  .fullclick li a.main::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: ' ';
+  }

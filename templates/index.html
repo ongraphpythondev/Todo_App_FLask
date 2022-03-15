@@ -4,12 +4,7 @@
 
 
 
-<!-- Button trigger modal -->
-<div class="col-md-12 text-center">
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Add A Todo
-</button>
-</div>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -60,11 +55,11 @@
   </div> -->
 
   <!-- <div class="container my-3">
-    {% if allTodo|length == 0 %}
+   
     <div class="alert alert-danger" role="alert">
       <h2>No record</h2>
     </div>
-    {% else %}
+   
     <h2 class="card-header mx-auto">MyTodos</h2><br>
     {% for todo in allTodo %} 
     <div class="card mx-auto" style="width: 50rem;">
@@ -103,16 +98,25 @@
         {% endfor %} -->
         
         <br><br>
-        
-          <div class="card-header mx-auto" style="width: 10rem;">Titles</div>
-        {% for todo in allTodo %}
-        <div class="card  mx-auto" style="width: 10rem;  height: 10rem;">
+        <div class="card bg-primary mb-3 mx-auto" style="width: 20rem;">
+          
           <div class="col-md-12 text-center">
-            <button type="button" class="btn btn-primary card-title"  data-toggle="modal" data-target="#TitleModalCenter{{todo.sno}}">
-              {{ todo.title }}
-            </button>
+            <h1 class="card-header">TITLES</h1>
           </div>
+        {% for todo in allTodo %}
+        
+        <div class="col-md-12 text-center">
+          <ul class="fullclick">
+            <button class="btn btn-light" data-toggle="modal" data-target="#TitleModalCenter{{todo.sno}}">
+    
+              <li>
+                <h3 class="card-title" style="width:10rem; height:5rem;"> {{ todo.title }} </h3>
+              </li>
+              
+            </button>
+          </ul>
         </div>
+       
           
           <!-- Modal -->
           <div class="modal fade" id="TitleModalCenter{{todo.sno}}" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
@@ -128,14 +132,24 @@
                   <h1>Hello</h1>
                   <p>To view the details kindly click on the button</p>
                   <a href="/view/{{todo.sno}}" type="button" class="btn btn-primary btn-sm mx-2">View</a>
+                  <button>
+                    <a href="{{ url_for('update', sno=todo.sno) }}" ><i class='fas fa-edit'></i></a>
+                  </button>
+                  <button>
+                    <a href="{{ url_for('delete', sno=todo.sno) }}"><i class="bi bi-trash"></i></a>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-  </div>
-  </div>
-</div>
+  
   {% endfor %}
-  {% endif %}
-
+  <!-- Button trigger modal -->
+  <div class="card-footer">
+    <div class="col-md-12 text-center">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        +Add A Todo
+      </button>
+    </div>
+  </div>
 {% endblock content %}
