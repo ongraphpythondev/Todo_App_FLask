@@ -59,14 +59,14 @@
       </form>
   </div> -->
 
-  <div class="container my-3">
+  <!-- <div class="container my-3">
     {% if allTodo|length == 0 %}
     <div class="alert alert-danger" role="alert">
       <h2>No record</h2>
     </div>
     {% else %}
     <h2 class="card-header mx-auto">MyTodos</h2><br>
-    {% for todo in allTodo %}
+    {% for todo in allTodo %} 
     <div class="card mx-auto" style="width: 50rem;">
 
     <table class="table">
@@ -94,16 +94,48 @@
             <button>
               <a href="{{ url_for('delete', sno=todo.sno) }}"><i class="bi bi-trash"></i></a>
             </button>
-            <!-- <a href="{{ url_for('view', sno=todo.sno)   }}" type="button" class="btn btn-primary btn-sm mx-2">View</a> -->
+            <a href="{{ url_for('view', sno=todo.sno)   }}" type="button" class="btn btn-primary btn-sm mx-2">View</a>
           </td>
         </tr>
       </tbody>
     </table>
         </div><br>
-        {% endfor %}
-
+        {% endfor %} -->
+        
+        <br><br>
+        
+          <div class="card-header mx-auto" style="width: 10rem;">Titles</div>
+        {% for todo in allTodo %}
+        <div class="card  mx-auto" style="width: 10rem;  height: 10rem;">
+          <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-primary card-title"  data-toggle="modal" data-target="#TitleModalCenter{{todo.sno}}">
+              {{ todo.title }}
+            </button>
+          </div>
+        </div>
+          
+          <!-- Modal -->
+          <div class="modal fade" id="TitleModalCenter{{todo.sno}}" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="ModalLongTitle">Details</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <h1>Hello</h1>
+                  <p>To view the details kindly click on the button</p>
+                  <a href="/view/{{todo.sno}}" type="button" class="btn btn-primary btn-sm mx-2">View</a>
+                </div>
+              </div>
+            </div>
+          </div>
   </div>
   </div>
-
+</div>
+  {% endfor %}
   {% endif %}
+
 {% endblock content %}

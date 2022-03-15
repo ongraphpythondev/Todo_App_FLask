@@ -2,8 +2,13 @@
 {% block title %}View{% endblock title %}
 {% block content %}
 
-<h1>Title</h1>
-<p>{{todo.title}}</p>
-<h1>Description</h1>
-<p>{{todo.description}}</p>
+<div class="card text-white bg-primary mb-3 mx-auto" style="width: 20rem;">
+    <div class="card-header">Details</div>
+    <div class="card-body">
+        <h5 class="card-title">Title</h5>
+        <p>{{todo.title}}</p>
+        <h5 class="card-title">Description</h5>
+        <p class="card-text">{{todo.description}}</p>
+    </div>
+</div>
 {% endblock content %}
