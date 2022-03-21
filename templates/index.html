@@ -5,7 +5,7 @@
 
 
 
-<!-- Modal -->
+  <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -55,13 +55,13 @@
   </div> -->
 
   <!-- <div class="container my-3">
-   
+
     <div class="alert alert-danger" role="alert">
       <h2>No record</h2>
     </div>
-   
+
     <h2 class="card-header mx-auto">MyTodos</h2><br>
-    {% for todo in allTodo %} 
+    {% for todo in allTodo %}
     <div class="card mx-auto" style="width: 50rem;">
 
     <table class="table">
@@ -96,28 +96,28 @@
     </table>
         </div><br>
         {% endfor %} -->
-        
+
         <br><br>
         <div class="card bg-primary mb-3 mx-auto" style="width: 20rem;">
-          
+
           <div class="col-md-12 text-center">
             <h1 class="card-header">TITLES</h1>
           </div>
         {% for todo in allTodo %}
-        
+
         <div class="col-md-12 text-center">
           <ul class="fullclick">
             <button class="btn btn-light" data-toggle="modal" data-target="#TitleModalCenter{{todo.sno}}">
-    
+
               <li>
                 <h3 class="card-title" style="width:10rem; height:5rem;"> {{ todo.title }} </h3>
               </li>
-              
+
             </button>
           </ul>
         </div>
-       
-          
+
+
           <!-- Modal -->
           <div class="modal fade" id="TitleModalCenter{{todo.sno}}" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -142,7 +142,7 @@
               </div>
             </div>
           </div>
-  
+
   {% endfor %}
   <!-- Button trigger modal -->
   <div class="card-footer">
